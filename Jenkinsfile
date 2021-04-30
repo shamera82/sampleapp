@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t shamera82/app:latest .'
+        sh 'docker build -t shamera82/app:${BUILD_ID}-${GIT_COMMIT} .'
       }
     }
     stage('Login') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push shamera82/app:latest'
+        sh 'docker push shamera82/app:${BUILD_ID}-${GIT_COMMIT}'
       }
     }
   }
